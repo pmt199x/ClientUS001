@@ -17,7 +17,6 @@
 		<property name="suffix" value=".jsp"></property>
 	</bean>
 
-
 	<bean id="dataSource"
 		class="org.apache.commons.dbcp2.BasicDataSource">
 		<property name="driverClassName"
@@ -32,5 +31,4 @@
 		class="org.springframework.jdbc.core.JdbcTemplate">
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
-
 </beans>

@@ -35,55 +35,51 @@ public class ClientDAO {
 	public Client getClientByID(String id) {
 
 		Client client = new Client();
-		String sql = "SELECT * FROM Client WHERE ClientID = " + id;
+		String sql = "SELECT * FROM Client WHERE ClientID = ?";
 
 		try {
-			client = this._jdbcTemplate.queryForObject(sql, new MapperClient());
+			client = this._jdbcTemplate.queryForObject(sql, new MapperClient(), id);
 		} catch (Exception e) {
 			System.out.println("Client not found");
 			client = null;
+			return client;
 		}		
 
 		return client;
 	}
 
-	public int addClient (Client client) {
+	public boolean addClient (Client client) {
 		
-		if (getClientByID(client.getClientID()) != null) 
-			return 0; // client was exists
 		
 		String sql = "INSERT INTO CLIENT(ClientID, FirstName, LastName, Gender, MaritalStatus, DateOfBirth, Address, Country) " +
 				"VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 		
-		try {
+		try { 
 			_jdbcTemplate.update(sql, 
 					client.getClientID(), client.getFirstName(), client.getLastName(), client.getGender(), client.getMaritalStatus(),
 					client.getDateOfBirth(), client.getAddress(), client.getCountry());
 		} catch (Exception e) {
-			System.out.println("Insert fail");
+			System.out.println("ClientDAO Insert fail");
 			e.printStackTrace();
-			return -1; // add client failed
-		}
-		
-		return 1; // add client success
+			return false; // add client failed
+		}		
+		return true; // add client success
 	}
 	
 	public int updateClient(Client client) {
 		
 		String sql = "UPDATE CLIENT SET FirstName = ?, LastName = ?, Gender = ?, MaritalStatus = ?, DateOfBirth = ?, Address = ?, Country = ?"
-				+ " WHERE ClientID = " + client.getClientID();
-				
-		
+				+ " WHERE ClientID = " + client.getClientID();						
+
 		try {
 			_jdbcTemplate.update(sql, 
 					 client.getFirstName(), client.getLastName(), client.getGender(), client.getMaritalStatus(),
 					client.getDateOfBirth(), client.getAddress(), client.getCountry());
 		} catch (Exception e) {
-			System.out.println("Update fail");
-			e.printStackTrace();
+			System.out.println("ClientDAO Update fail");
+			//e.printStackTrace();
 			return -1; // update client failed
-		}
-		
+		}		
 		return 1; // update client success
 	}
 }

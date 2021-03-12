@@ -2,13 +2,16 @@ package entity;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class Client {
 	
 	private String clientID;
 	private String firstName;
 	private String lastName;
-	private String gender;
-	private Date dateOfBirth;
+	private String gender;	
+	@DateTimeFormat(pattern = "yyyy/MM/dd")
+	private Date dateOfBirth;	
 	private String maritalStatus;
 	private String address;
 	private String country;
@@ -81,8 +84,9 @@ public class Client {
 	}
 	@Override
 	public String toString() {
-		return "Client [clientID=" + clientID + ", firstName=" + firstName + ", lastName=" + lastName + ", dateOfBirth="
-				+ dateOfBirth + ", maritalStatus=" + maritalStatus + ", address=" + address + ", country=" + country
-				+ "]";
+		return "Client [clientID=" + clientID + ", firstName=" + firstName + ", lastName=" + lastName + ", gender="
+				+ gender + ", dateOfBirth=" + dateOfBirth + ", maritalStatus=" + maritalStatus + ", address=" + address
+				+ ", country=" + country + "]";
 	}
+	
 }
