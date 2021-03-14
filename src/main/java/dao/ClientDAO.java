@@ -69,15 +69,15 @@ public class ClientDAO {
 	public int updateClient(Client client) {
 		
 		String sql = "UPDATE CLIENT SET FirstName = ?, LastName = ?, Gender = ?, MaritalStatus = ?, DateOfBirth = ?, Address = ?, Country = ?"
-				+ " WHERE ClientID = " + client.getClientID();						
+				+ " WHERE ClientID = ?";						
 
 		try {
 			_jdbcTemplate.update(sql, 
 					 client.getFirstName(), client.getLastName(), client.getGender(), client.getMaritalStatus(),
-					client.getDateOfBirth(), client.getAddress(), client.getCountry());
+					client.getDateOfBirth(), client.getAddress(), client.getCountry(),  client.getClientID());
 		} catch (Exception e) {
 			System.out.println("ClientDAO Update fail");
-			//e.printStackTrace();
+			e.printStackTrace();
 			return -1; // update client failed
 		}		
 		return 1; // update client success

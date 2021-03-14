@@ -20,5 +20,4 @@ public class MapperClient implements RowMapper<Client> {
 		client.setCountry(rs.getString("Country"));
 		return client;
 	}
-
 }

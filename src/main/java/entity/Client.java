@@ -65,6 +65,9 @@ public class Client {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
+	public String test() {
+		return "test!";
+	}
 	
 	public Client(String clientID, String firstName, String lastName, String gender, Date dateOfBirth,
 			String maritalStatus, String address, String country) {
@@ -88,5 +91,7 @@ public class Client {
 				+ gender + ", dateOfBirth=" + dateOfBirth + ", maritalStatus=" + maritalStatus + ", address=" + address
 				+ ", country=" + country + "]";
 	}
+	
+	
 	
 }

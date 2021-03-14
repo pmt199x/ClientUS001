@@ -121,7 +121,7 @@
 					<div class="col-6">
 						<form:select path="country" class="form-select">
 							<form:option value="VNI">Vietnam</form:option>
-							<form:option value="USA">United</form:option>
+							<form:option value="USA">United States</form:option>
 							<form:option value="SIN">Singapore</form:option>
 							<form:option value="MAL">Malaysia</form:option>
 						</form:select>

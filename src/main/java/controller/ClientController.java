@@ -36,10 +36,13 @@ public class ClientController {
 		now.getYear() + "-" + now.getMonthValue() + "-" + now.getDayOfMonth() + "";
 	
 	@RequestMapping("/")
-	public String Index() {
+	public String Client(Model model) {
+		model.addAttribute("command", new Client());
 		List<Client> list = clientDAO.getClients();
-
-		return "user/index";
+		model.addAttribute("listClient", list);
+		model.addAttribute("maxDate", maxDate);
+		
+		return "user/client";
 	}
 
 	@RequestMapping(value = "/createclient", method = RequestMethod.GET)
@@ -50,6 +53,7 @@ public class ClientController {
 		return "user/createclient";
 	}
 
+	
 	@RequestMapping(value = "/saveclient", method = RequestMethod.POST, produces = "application/x-www-form-urlencoded; charser=UTF-8")
 	public String saveClient(@ModelAttribute("client") Client client, Model model) {	
 		
@@ -61,9 +65,20 @@ public class ClientController {
 		}
 		else {					
 			clientDAO.addClient(client);
-			return "redirect:/createclient";    
+			return "redirect:/";    
 		}
 	}
+	
+	@RequestMapping(value = "/updateclient", method = RequestMethod.POST, produces = "application/x-www-form-urlencoded; charser=UTF-8")
+	public String updateClient(@ModelAttribute("client") Client client, Model model) {	
+		
+		System.out.println(client);
+		if (clientDAO.getClientByID(client.getClientID()) != null) {		
+			System.out.println(clientDAO.updateClient(client));					 
+		}
+		return "redirect:/";    
+	}
+	
 	@InitBinder
 	protected void initBinder(WebDataBinder binder) {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
