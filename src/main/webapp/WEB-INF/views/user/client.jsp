@@ -128,8 +128,6 @@
 	<div class="d-flex justify-content-center"
 		style="background-color: #f3f3f3; min-height: 600px">
 
-
-
 		<div
 			class="row d-flex justify-content-center w-100 pl-3 pr-3 pt-5 pb-5">
 
@@ -146,7 +144,7 @@
 					</div>
 
 					<div class="col-12 mt-2 d-flex justify-content-center">
-						<i><b id="clientID">01234455667</b></i>
+						<i><b id="clientID"></b></i>
 					</div>
 					<div class="col-12 row mt-4">
 						<div class="col-4">
@@ -224,8 +222,8 @@
 							<div class="col-8">
 								<form:input type="text" path="firstName" id="txtFirstName" class="form-control"
 									maxlength="60" required="required"
-									oninvalid="this.setCustomValidity('This is a mandatory field')"
-									oninput="setCustomValidity('')" />
+									oninvalid="this.setCustomValidity('This is a mandatory field, no symbol, no number')"
+									oninput="setCustomValidity('')" pattern="[a-zA-Z ]+" />
 							</div>
 						</div>
 
@@ -236,10 +234,9 @@
 							<div class="col-8">
 								<form:input type="text" path="lastName" id="txtLastName" class="form-control"
 									maxlength="60" required="required"
-									oninvalid="this.setCustomValidity('This is a mandatory field')"
-									oninput="setCustomValidity('')" />
+									oninvalid="this.setCustomValidity('This is a mandatory field, no symbol, no number')"
+									oninput="setCustomValidity('')" pattern="[a-zA-Z ]+" />
 							</div>
-
 						</div>
 
 						<div class="row mt-2 mb-2">
@@ -253,7 +250,6 @@
 									<form:option value="U">Unknown</form:option>
 								</form:select>
 							</div>
-
 						</div>
 
 						<div class="row mt-2 mb-2">

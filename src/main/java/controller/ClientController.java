@@ -57,6 +57,15 @@ public class ClientController {
 	@RequestMapping(value = "/saveclient", method = RequestMethod.POST, produces = "application/x-www-form-urlencoded; charser=UTF-8")
 	public String saveClient(@ModelAttribute("client") Client client, Model model) {	
 		
+		model.addAttribute("command", client);
+		System.out.println(client);
+		if (!validateForm(client)) {
+			model.addAttribute("errorMessage", "Wrong data type!");			
+			model.addAttribute("maxDate", maxDate);
+			System.out.println("Insert failed because wrong data type");
+			return "user/createclient";    			
+		}
+		
 		if (clientDAO.getClientByID(client.getClientID()) != null) {
 			model.addAttribute("errorMessage", "Existing ID number!");
 			model.addAttribute("command", client);
@@ -85,4 +94,12 @@ public class ClientController {
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(
 				dateFormat, false));
 	}
+	
+	public boolean validateForm(Client client) {
+		if (client.getClientID().contains(" "))
+				return false;
+		
+		return true;
+	}
+	
 }

@@ -1,2 +1,5 @@
 eclipse.preferences.version=1
 encoding//src/main/java/controller/ClientController.java=UTF-8
+encoding//src/main/webapp/WEB-INF/views/user/client.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/user/createclient.jsp=UTF-8
+encoding/<project>=UTF-8

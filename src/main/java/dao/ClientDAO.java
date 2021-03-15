@@ -44,7 +44,6 @@ public class ClientDAO {
 			client = null;
 			return client;
 		}		
-
 		return client;
 	}
 
@@ -52,8 +51,7 @@ public class ClientDAO {
 		
 		
 		String sql = "INSERT INTO CLIENT(ClientID, FirstName, LastName, Gender, MaritalStatus, DateOfBirth, Address, Country) " +
-				"VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-		
+				"VALUES (?, ?, ?, ?, ?, ?, ?, ?)";		
 		try { 
 			_jdbcTemplate.update(sql, 
 					client.getClientID(), client.getFirstName(), client.getLastName(), client.getGender(), client.getMaritalStatus(),

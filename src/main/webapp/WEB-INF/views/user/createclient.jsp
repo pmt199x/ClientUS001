@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv='Content-Type' content='text/html; charset="UTF-8'>
+<meta http-equiv='Content-Type' content="text/html; charset=UTF-8">
 <!-- CSS only -->
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
@@ -35,9 +35,10 @@
 					</div>
 					<div class="col-6">
 						<form:input type="text" path="ClientID" class="form-control" maxlength="15" required="required"
-						oninvalid="this.setCustomValidity('This is a mandatory field')" oninput="setCustomValidity('')" />
+						oninvalid="this.setCustomValidity('This is a mandatory field, no space or symbol')" oninput="setCustomValidity('')"  pattern="[a-zA-Z0-9]+" />
 					</div>
 					<div class="col-3 d-flex align-items-center" style="color: red; font-style: italic;">${errorMessage}</div>
+					
 				</div>
 
 				<div class="row mt-2 mb-2">
@@ -47,7 +48,7 @@
 					</div>
 					<div class="col-6">
 						<form:input type="text" path="firstName" class="form-control" maxlength="60" required="required"
-						oninvalid="this.setCustomValidity('This is a mandatory field')" oninput="setCustomValidity('')" />
+						oninvalid="this.setCustomValidity('This is a mandatory field, no symbol, no number')" oninput="setCustomValidity('')"  pattern="[a-zA-Z ]+" />
 					</div>
 					<div class="col-3"></div>
 				</div>
@@ -59,7 +60,7 @@
 					</div>
 					<div class="col-6">
 						<form:input type="text" path="lastName" class="form-control" maxlength="60" required="required"
-						oninvalid="this.setCustomValidity('This is a mandatory field')" oninput="setCustomValidity('')" />
+						oninvalid="this.setCustomValidity('This is a mandatory field, no symbol, no number')" oninput="setCustomValidity('')" pattern="[a-zA-Z ]+" />
 					</div>
 					<div class="col-3"></div>
 				</div>
