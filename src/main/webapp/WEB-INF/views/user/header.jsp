@@ -14,7 +14,7 @@
     	</div>
     	<div class="col-7">
     		<div class="row justify-content-around" style="text-align: center; padding: 0 100px 0 100px; font-weight: 500;">
-    		<a href="/ClientUS001" style="text-decoration: none;"><span class="col-2" style="color: black">Client</span></a>
+    		<span class="col-2"><a href="/ClientUS001" style="text-decoration: none; color: black">Client</a></span>
     		<span class="col-2">Motor</span>
     		<span class="col-2">Claim</span>
     		<span class="col-2">Reciept</span>

@@ -29,7 +29,7 @@
 	function fillClient(clientID, firstName, lastName, dateOfBirth, gender,
 			maritalStatus, address, country) {
 
-		document.getElementById("clientID").innerHTML = clientID;
+		document.getElementById("clientID").innerHTML = clientID + '';
 		document.getElementById("firstName").innerHTML = firstName;
 		document.getElementById("lastName").innerHTML = lastName;
 		document.getElementById("dateOfBirth").innerHTML = dateOfBirth;
@@ -330,7 +330,7 @@
 								onclick="fillClient('${client.clientID}','${client.firstName}', '${client.lastName}',
 							'<fmt:formatDate value="${client.dateOfBirth}" pattern="dd-MM-yyyy" />', '${client.gender}', '${client.maritalStatus}', '${client.address}',
 							'${client.country}')">
-								<td><c:out value="${client.clientID}" /></td>
+								<td><c:out value="${client.getClientID()}" /></td>
 								<td><c:out value="${client.firstName}" /></td>
 								<td><c:out value="${client.lastName}" /></td>
 								<td><fmt:formatDate value="${client.dateOfBirth}"
