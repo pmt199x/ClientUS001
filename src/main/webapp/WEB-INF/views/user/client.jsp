@@ -33,6 +33,7 @@
 		document.getElementById("firstName").innerHTML = firstName;
 		document.getElementById("lastName").innerHTML = lastName;
 		document.getElementById("dateOfBirth").innerHTML = dateOfBirth;
+		
 		if (gender == 'M')
 			document.getElementById("gender").innerHTML = 'Male';
 		else if (gender == 'F')
@@ -82,7 +83,18 @@
 							document.getElementById("txtFirstName").value = document.getElementById("firstName").textContent;	
 							document.getElementById("txtLastName").value = document.getElementById("lastName").textContent;	
 							document.getElementById("txtAddress").value = document.getElementById("address").textContent;
-							document.getElementById("txtDateOfBirth").value = document.getElementById("dateOfBirth").textContent;
+							
+							var date = new Date(document.getElementById("dateOfBirth").textContent);
+							var month = date.getMonth() + 1;
+							if (date.getMonth() + 1 < 10 &&  date.getDate() < 10)
+								document.getElementById("txtDateOfBirth").value = date.getFullYear() + '-0' + month + '-0' + date.getDate();
+							else if (date.getMonth() + 1 < 10)
+								document.getElementById("txtDateOfBirth").value = date.getFullYear() + '-0' + month + '-' + date.getDate();
+							else if (date.getDate() < 10)
+								document.getElementById("txtDateOfBirth").value = date.getFullYear() + '-' + month + '-0' + date.getDate();
+							else
+								document.getElementById("txtDateOfBirth").value = date.getFullYear() + '-' + month + '-' + date.getDate();
+							console.log(date);
 							
 							var gender = document.getElementById("gender").textContent;							
 							if (gender == "Male")
@@ -328,13 +340,13 @@
 						<c:forEach items="${listClient}" var="client">
 							<tr
 								onclick="fillClient('${client.clientID}','${client.firstName}', '${client.lastName}',
-							'<fmt:formatDate value="${client.dateOfBirth}" pattern="dd-MM-yyyy" />', '${client.gender}', '${client.maritalStatus}', '${client.address}',
+							'<fmt:formatDate value="${client.dateOfBirth}" pattern="MM-dd-yyyy" />', '${client.gender}', '${client.maritalStatus}', '${client.address}',
 							'${client.country}')">
 								<td><c:out value="${client.getClientID()}" /></td>
 								<td><c:out value="${client.firstName}" /></td>
 								<td><c:out value="${client.lastName}" /></td>
 								<td><fmt:formatDate value="${client.dateOfBirth}"
-										pattern="dd-MM-yyyy" /></td>
+										pattern="MM-dd-yyyy" /></td>
 							</tr>
 						</c:forEach>
 					</tbody>
