@@ -9,6 +9,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
@@ -27,6 +28,8 @@ import entity.Client;
 
 @Controller
 public class ClientController {
+	
+	private static final Logger logger = Logger.getLogger(ClientController.class);
 
 	@Autowired
 	ClientDAO clientDAO;
@@ -41,7 +44,7 @@ public class ClientController {
 		List<Client> list = clientDAO.getClients();
 		model.addAttribute("listClient", list);
 		model.addAttribute("maxDate", maxDate);
-		
+		logger.info("info log");
 		return "user/client";
 	}
 

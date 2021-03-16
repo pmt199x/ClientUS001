@@ -4,16 +4,20 @@ import java.sql.SQLDataException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import controller.ClientController;
 import entity.Client;
 import entity.MapperClient;
 
 @Repository
 public class ClientDAO {
-
+	
+	private static final Logger logger = Logger.getLogger(ClientDAO.class);
+	
 	@Autowired
 	public JdbcTemplate _jdbcTemplate;
 
@@ -25,7 +29,7 @@ public class ClientDAO {
 		try {
 			lstClient = this._jdbcTemplate.query(sql, new MapperClient());
 		} catch (Exception e) {
-			System.out.println("List Client Empty");
+			logger.error("List Client Empty");
 			lstClient = null;
 		}
 
@@ -39,8 +43,8 @@ public class ClientDAO {
 
 		try {
 			client = this._jdbcTemplate.queryForObject(sql, new MapperClient(), id);
-		} catch (Exception e) {
-			System.out.println("Client not found");
+		} catch (Exception e) {			
+			logger.error("Client not found");
 			client = null;
 			return client;
 		}		
@@ -57,7 +61,7 @@ public class ClientDAO {
 					client.getClientID(), client.getFirstName(), client.getLastName(), client.getGender(), client.getMaritalStatus(),
 					client.getDateOfBirth(), client.getAddress(), client.getCountry());
 		} catch (Exception e) {
-			System.out.println("ClientDAO Insert fail");
+			logger.error("ClientDAO Insert fail");			
 			e.printStackTrace();
 			return false; // add client failed
 		}		
@@ -74,7 +78,7 @@ public class ClientDAO {
 					 client.getFirstName(), client.getLastName(), client.getGender(), client.getMaritalStatus(),
 					client.getDateOfBirth(), client.getAddress(), client.getCountry(),  client.getClientID());
 		} catch (Exception e) {
-			System.out.println("ClientDAO Update fail");
+			logger.error("ClientDAO Update fail");	
 			e.printStackTrace();
 			return -1; // update client failed
 		}		
